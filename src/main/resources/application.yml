@@ -1,0 +1,21 @@
+# Server Configuration
+server:
+    port: 8080
+    
+spring:
+ data: 
+  rest:
+   defaultMediaType: application/json
+  mongodb:
+   uri: mongodb://beatlm:aikidodb18@ds135413.mlab.com:35413/aikido
+   database: aikido
+   
+
+ 
+ management:
+  endpoints:
+   web:
+    cors:
+     allowed-origins: '*'
+
+   
