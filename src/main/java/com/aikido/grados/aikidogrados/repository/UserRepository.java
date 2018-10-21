@@ -23,5 +23,6 @@ public interface UserRepository extends PagingAndSortingRepository<User,String> 
 	@RestResource( rel="buscarPorNombre", path="findByNameNO" )
 	List<User> findByName(@Param("name") String name); 
 
+
 	
 }
