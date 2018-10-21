@@ -1,5 +1,7 @@
 package com.aikido.grados.aikidogrados.entity;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 
 public class User {
@@ -8,7 +10,7 @@ public class User {
 
 	private String name;
 	private String email;
-	private UserStatus status;
+	private List<UserStatus> status;
 	private String grado;
 
 	public String getId() {
@@ -36,12 +38,13 @@ public class User {
 	public void setGrado(String grado) {
 		this.grado = grado;
 	}
-	public UserStatus getStatus() {
+	public List<UserStatus> getStatus() {
 		return status;
 	}
-	public void setStatus(UserStatus status) {
+	public void setStatus(List<UserStatus> status) {
 		this.status = status;
 	}
+
 	
 
 }
