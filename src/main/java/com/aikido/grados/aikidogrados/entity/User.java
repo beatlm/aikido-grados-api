@@ -1,6 +1,6 @@
 package com.aikido.grados.aikidogrados.entity;
 
-import java.util.List;
+import java.sql.Date;
 
 import org.springframework.data.annotation.Id;
 
@@ -12,14 +12,13 @@ public class User {
 	private String email;
 	private String status;
 	private String grado;
-	private String createDate;
-	private String emailDate;
-	private String paymentDate;
-	private String sentDate;
-	private String receivedDate;
-	private String file;
-	private String paymentFile;
-
+	private Date createDate;
+	private Date emailDate;
+	private Date paymentDate;
+	private Date sentDate;
+	private Date receivedDate;
+	private byte[] file;
+	private byte[] paymentFile;
 	public String getId() {
 		return id;
 	}
@@ -38,60 +37,61 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public String getGrado() {
-		return grado;
-	}
-	public void setGrado(String grado) {
-		this.grado = grado;
-	}
 	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getCreateDate() {
+	public String getGrado() {
+		return grado;
+	}
+	public void setGrado(String grado) {
+		this.grado = grado;
+	}
+	public Date getCreateDate() {
 		return createDate;
 	}
-	public void setCreateDate(String createDate) {
+	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public String getEmailDate() {
+	public Date getEmailDate() {
 		return emailDate;
 	}
-	public void setEmailDate(String emailDate) {
+	public void setEmailDate(Date emailDate) {
 		this.emailDate = emailDate;
 	}
-	public String getPaymentDate() {
+	public Date getPaymentDate() {
 		return paymentDate;
 	}
-	public void setPaymentDate(String paymentDate) {
+	public void setPaymentDate(Date paymentDate) {
 		this.paymentDate = paymentDate;
 	}
-	public String getSentDate() {
+	public Date getSentDate() {
 		return sentDate;
 	}
-	public void setSentDate(String sentDate) {
+	public void setSentDate(Date sentDate) {
 		this.sentDate = sentDate;
 	}
-	public String getReceivedDate() {
+	public Date getReceivedDate() {
 		return receivedDate;
 	}
-	public void setReceivedDate(String receivedDate) {
+	public void setReceivedDate(Date receivedDate) {
 		this.receivedDate = receivedDate;
 	}
-	public String getFile() {
+	public byte[] getFile() {
 		return file;
 	}
-	public void setFile(String file) {
+	public void setFile(byte[] file) {
 		this.file = file;
 	}
-	public String getPaymentFile() {
+	public byte[] getPaymentFile() {
 		return paymentFile;
 	}
-	public void setPaymentFile(String paymentFile) {
+	public void setPaymentFile(byte[] paymentFile) {
 		this.paymentFile = paymentFile;
 	}
+
+
 
 }
