@@ -1,6 +1,6 @@
 package com.aikido.grados.aikidogrados.entity;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 
