@@ -17,8 +17,8 @@ public class User {
 	private Date paymentDate;
 	private Date sentDate;
 	private Date receivedDate;
-	private byte[] file;
-	private byte[] paymentFile;
+	private File file;
+	private File paymentFile;
 	public String getId() {
 		return id;
 	}
@@ -79,19 +79,19 @@ public class User {
 	public void setReceivedDate(Date receivedDate) {
 		this.receivedDate = receivedDate;
 	}
-	public byte[] getFile() {
+	public File getFile() {
 		return file;
 	}
-	public void setFile(byte[] file) {
+	public void setFile(File file) {
 		this.file = file;
 	}
-	public byte[] getPaymentFile() {
+	public File getPaymentFile() {
 		return paymentFile;
 	}
-	public void setPaymentFile(byte[] paymentFile) {
+	public void setPaymentFile(File paymentFile) {
 		this.paymentFile = paymentFile;
 	}
-
+	
 
 
 }
