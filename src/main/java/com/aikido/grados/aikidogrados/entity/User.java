@@ -9,6 +9,13 @@ public class User {
 	private String id;
 
 	private String name;
+	private String licence;
+	public String getLicence() {
+		return licence;
+	}
+	public void setLicence(String licence) {
+		this.licence = licence;
+	}
 	private String email;
 	private String status;
 	private String grado;

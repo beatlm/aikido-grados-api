@@ -20,9 +20,10 @@ import com.aikido.grados.aikidogrados.entity.User;
 methods={RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH})
 public interface UserRepository extends PagingAndSortingRepository<User,String> {
 	
-	@RestResource( rel="buscarPorNombre", path="findByNameNO" )
+	@RestResource( rel="buscarPorNombre", path="findByName" )
 	List<User> findByName(@Param("name") String name); 
 
-
+	@RestResource( rel="buscarPorLicencia", path="findByLicenceNumber" )
+	List<User> findByLicence(@Param("licence") String licence); 
 	
 }
