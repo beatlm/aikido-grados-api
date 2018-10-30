@@ -23,7 +23,7 @@ methods={RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMet
 public interface UserRepository extends PagingAndSortingRepository<User,String> {
 	
 	@RestResource( rel="buscarPorNombre", path="findByName" )
-	List<User> findByName(@Param("name") String name); 
+	Page<User> findByName(@Param("name") String name, Pageable pageable); 
 
 	@RestResource( rel="buscarPorLicencia", path="findByLicenceNumber" )
 	Page<User> findByLicence(@Param("licence") String licence, Pageable pageable); 
