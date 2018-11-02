@@ -5,7 +5,7 @@ public class File {
 	private String name;
 
 	private String type;
-	private String content;
+	private String fileContent;
 	public String getName() {
 		return name;
 	}
@@ -18,12 +18,13 @@ public class File {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getContent() {
-		return content;
+	public String getFileContent() {
+		return fileContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setFileContent(String fileContent) {
+		this.fileContent = fileContent;
 	}
+ 
 
 	
 	
