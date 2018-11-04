@@ -19,6 +19,7 @@ public class LoginRepository {
     public LoginUser authenticate() {
 		LoginUser login= new LoginUser();
 		login.setName("Usuario de pruebas");
+		login.setToken("Token de pruebas");
         return login;
     }
 	
