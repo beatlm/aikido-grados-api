@@ -11,7 +11,7 @@ import com.aikido.grados.aikidogrados.model.LoginUser;
 
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:4200", "https://aikido-grados-front.herokuapp.com"}, 
+@CrossOrigin(origins = {"http://localhost:4200", "https://aikido-grados.herokuapp.com"}, 
 methods={RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH})
 public class LoginRepository {
 	

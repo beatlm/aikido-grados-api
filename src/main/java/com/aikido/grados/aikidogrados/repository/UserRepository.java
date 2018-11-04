@@ -16,7 +16,7 @@ import com.aikido.grados.aikidogrados.entity.User;
 
 @RepositoryRestResource(collectionResourceRel = "result", path = "user") 
 
-@CrossOrigin(origins = {"http://localhost:4200", "https://aikido-grados-front.herokuapp.com"}, 
+@CrossOrigin(origins = {"http://localhost:4200", "https://aikido-grados.herokuapp.com"}, 
 methods={RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH})
 public interface UserRepository extends PagingAndSortingRepository<User,String> {
 	
