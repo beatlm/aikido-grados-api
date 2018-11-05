@@ -6,10 +6,10 @@ import org.springframework.data.annotation.Id;
 
 public class User {
 	@Id
-	private String id;
+	private String licence;
 
 	private String name;
-	private String licence;
+
 	public String getLicence() {
 		return licence;
 	}
@@ -26,12 +26,7 @@ public class User {
 	private Date receivedDate;
 	private File file;
 	private File paymentFile;
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
