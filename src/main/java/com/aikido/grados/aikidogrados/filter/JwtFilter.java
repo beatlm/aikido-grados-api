@@ -1,7 +1,24 @@
-package com.aikido.grados.aikidogrados;
+package com.aikido.grados.aikidogrados.filter;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import java.io.IOException;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.impl.TextCodec;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpMethod;
 
 @WebFilter(urlPatterns = "/api/*")
 public class JwtFilter implements Filter {
