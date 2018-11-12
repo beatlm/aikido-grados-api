@@ -37,3 +37,4 @@ request.xml
 output.xml
 
 /.apt_generated/
+/._src
