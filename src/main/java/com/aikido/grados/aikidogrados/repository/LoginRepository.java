@@ -41,7 +41,7 @@ public class LoginRepository {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ResponseEntity<AuthenticateUser> register(@RequestBody AuthenticateUser user) {
 
-		MongoOperations mongoOps = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "database"));
+		MongoOperations mongoOps = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "aikido"));
 
 		AuthenticateUser newUser = new AuthenticateUser();
 		newUser.setUsername(user.getUsername());
