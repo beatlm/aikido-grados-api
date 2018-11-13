@@ -2,7 +2,7 @@ package com.aikido.grados.aikidogrados.model;
 
 import org.springframework.data.annotation.Id;
 
-public class LoginUser {
+public class TokenData {
 	@Id
 	private String id;
 

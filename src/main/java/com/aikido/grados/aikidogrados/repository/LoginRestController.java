@@ -1,7 +1,8 @@
 
 package com.aikido.grados.aikidogrados.repository;
 
-import org.apache.commons.codec.binary.StringUtils;
+import org.apache.commons.lang.StringUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aikido.grados.aikidogrados.model.AuthenticateUser;
-import com.aikido.grados.aikidogrados.model.LoginUser;
+import com.aikido.grados.aikidogrados.model.TokenData;
 import com.aikido.grados.aikidogrados.utils.Encryptor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -29,13 +30,15 @@ public class LoginRestController {
 	private Encryptor encryptor;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
-	public ResponseEntity<LoginUser> authenticate(@RequestBody AuthenticateUser user) {
-
-		if (StringUtils.equals(user.getUsername(), "bea") && StringUtils.equals(user.getPassword(), "1234")) {
-			LoginUser login = new LoginUser();
-			login.setName("Usuario de pruebas");
-			login.setToken("Token de pruebas");
-			return new ResponseEntity<>(login, HttpStatus.OK);
+	public ResponseEntity<TokenData> authenticate(@RequestBody AuthenticateUser user) {
+		
+		AuthenticateUser foundUser = loginRepository.findByUsernameAndPassword(user.getUsername(),encryptor.decrypt(user.getPassword()));
+		log.info("Found: " + foundUser.getUsername());
+		if (!StringUtils.isEmpty(foundUser.getId())){
+			TokenData tokenData = new TokenData();
+			tokenData.setName(foundUser.getUsername());
+			tokenData.setToken("Token");
+			return new ResponseEntity<>(tokenData, HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
@@ -48,21 +51,11 @@ public class LoginRestController {
 		newUser.setPassword(encryptor.encrypt(user.getPassword()));
 		log.info("Guardamos el usuario '{}' con password '{}'", newUser.getUsername(), newUser.getPassword());
 		loginRepository.save(newUser);
-		
-		
-	//	MongoOperations mongoOps = new MongoTemplate(new SimpleMongoDbFactory(new MongoClient(), "aikido"));
 
+		AuthenticateUser foundUser = loginRepository.findByUsername(newUser.getUsername());
+		log.info("Found: " + foundUser.getUsername());
 		
-
-		// Insert is used to initially store the object into the database.
-	//	mongoOps.insert(newUser);
-		//log.info("Insert: " + newUser);
-
-		// Find
-		//AuthenticateUser p = mongoOps.findById(newUser.getId(), AuthenticateUser.class);
-		AuthenticateUser p = loginRepository.findByUsername(newUser.getUsername());
-		log.info("Found: " + p);
-		return new ResponseEntity<>(p, HttpStatus.OK);
+		return new ResponseEntity<>(foundUser, HttpStatus.OK);
 
 	}
 
