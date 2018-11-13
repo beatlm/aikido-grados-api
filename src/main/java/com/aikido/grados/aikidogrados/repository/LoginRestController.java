@@ -59,7 +59,7 @@ public class LoginRestController {
 
 		// Find
 		//AuthenticateUser p = mongoOps.findById(newUser.getId(), AuthenticateUser.class);
-		AuthenticateUser p = loginRepository.findByUserName(newUser.getUsername());
+		AuthenticateUser p = loginRepository.findByUsername(newUser.getUsername());
 		log.info("Found: " + p);
 		return new ResponseEntity<>(p, HttpStatus.OK);
 
