@@ -36,7 +36,7 @@ public class LoginRestController {
 		log.info("Buscamos por nombre: " + foundUser.getUsername());
 		if (!StringUtils.isEmpty(foundUser.getId())){
 			log.info("Found: " + foundUser.getUsername());
-			if(foundUser.getPassword().equals(encryptor.encrypt(user.getPassword()))){
+			if(encryptor.decrypt(foundUser.getPassword()).equals(user.getPassword())){
 				TokenData tokenData = new TokenData();
 				tokenData.setName(foundUser.getUsername());
 				tokenData.setToken("Token");
