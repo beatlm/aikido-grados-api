@@ -33,8 +33,9 @@ public class LoginRestController {
 	public ResponseEntity<TokenData> authenticate(@RequestBody AuthenticateUser user) {
 		
 		AuthenticateUser foundUser = loginRepository.findByUsernameAndPassword(user.getUsername(),encryptor.encrypt(user.getPassword()));
-		log.info("Found: " + foundUser.getUsername());
-		if (!StringUtils.isEmpty(foundUser.getId())){
+		
+		if (foundUser!=null && !StringUtils.isEmpty(foundUser.getId())){
+			log.info("Found: " + foundUser.getUsername());
 			TokenData tokenData = new TokenData();
 			tokenData.setName(foundUser.getUsername());
 			tokenData.setToken("Token");
