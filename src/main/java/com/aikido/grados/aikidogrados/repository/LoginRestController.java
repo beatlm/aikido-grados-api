@@ -25,24 +25,26 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginRestController {
 	@Autowired
 	private LoginRepository loginRepository;
-	
+
 	@Autowired
 	private Encryptor encryptor;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<TokenData> authenticate(@RequestBody AuthenticateUser user) {
-		
-		AuthenticateUser foundUser = loginRepository.findByUsernameAndPassword(user.getUsername(),encryptor.encrypt(user.getPassword()));
-		
+
+		AuthenticateUser foundUser = loginRepository.findByUsername(user.getUsername());
+
 		if (foundUser!=null && !StringUtils.isEmpty(foundUser.getId())){
 			log.info("Found: " + foundUser.getUsername());
-			TokenData tokenData = new TokenData();
-			tokenData.setName(foundUser.getUsername());
-			tokenData.setToken("Token");
-			return new ResponseEntity<>(tokenData, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
-		}
+			if(foundUser.getPassword().equals(encryptor.encrypt(user.getPassword()))){
+				TokenData tokenData = new TokenData();
+				tokenData.setName(foundUser.getUsername());
+				tokenData.setToken("Token");
+				return new ResponseEntity<>(tokenData, HttpStatus.OK);
+			}
+		} 
+		return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
+
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -55,7 +57,7 @@ public class LoginRestController {
 
 		AuthenticateUser foundUser = loginRepository.findByUsername(newUser.getUsername());
 		log.info("Found: " + foundUser.getUsername());
-		
+
 		return new ResponseEntity<>(foundUser, HttpStatus.OK);
 
 	}
