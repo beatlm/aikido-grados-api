@@ -32,7 +32,7 @@ public class LoginRestController {
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<TokenData> authenticate(@RequestBody AuthenticateUser user) {
 		
-		AuthenticateUser foundUser = loginRepository.findByUsernameAndPassword(user.getUsername(),encryptor.decrypt(user.getPassword()));
+		AuthenticateUser foundUser = loginRepository.findByUsernameAndPassword(user.getUsername(),encryptor.encrypt(user.getPassword()));
 		log.info("Found: " + foundUser.getUsername());
 		if (!StringUtils.isEmpty(foundUser.getId())){
 			TokenData tokenData = new TokenData();
