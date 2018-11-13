@@ -38,6 +38,7 @@ public class LoginRestController {
 			log.info("Found: " + foundUser.getUsername());
 			if(encryptor.decrypt(foundUser.getPassword()).equals(user.getPassword())){
 				TokenData tokenData = new TokenData();
+				tokenData.setId(foundUser.getId());
 				tokenData.setName(foundUser.getUsername());
 				tokenData.setToken("Token");
 				return new ResponseEntity<>(tokenData, HttpStatus.OK);
