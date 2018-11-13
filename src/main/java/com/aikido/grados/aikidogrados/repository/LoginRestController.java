@@ -3,8 +3,6 @@ package com.aikido.grados.aikidogrados.repository;
 
 import org.apache.commons.codec.binary.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aikido.grados.aikidogrados.model.AuthenticateUser;
 import com.aikido.grados.aikidogrados.model.LoginUser;
-import com.mongodb.MongoClient;
+import com.aikido.grados.aikidogrados.utils.Encryptor;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -26,6 +24,9 @@ import lombok.extern.slf4j.Slf4j;
 public class LoginRestController {
 	@Autowired
 	private LoginRepository loginRepository;
+	
+	@Autowired
+	private Encryptor encryptor;
 
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<LoginUser> authenticate(@RequestBody AuthenticateUser user) {
@@ -44,8 +45,8 @@ public class LoginRestController {
 	public ResponseEntity<AuthenticateUser> register(@RequestBody AuthenticateUser user) {
 		AuthenticateUser newUser = new AuthenticateUser();
 		newUser.setUsername(user.getUsername());
-		newUser.setPassword(user.getPassword());//TODO encriptar 
-		
+		newUser.setPassword(encryptor.encrypt(user.getPassword()));
+		log.info("Guardamos el usuario '{}' con password '{}'", newUser.getUsername(), newUser.getPassword());
 		loginRepository.save(newUser);
 		
 		
