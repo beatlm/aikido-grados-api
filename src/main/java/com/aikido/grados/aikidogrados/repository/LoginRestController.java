@@ -34,7 +34,7 @@ public class LoginRestController {
 
 		AuthenticateUser foundUser = loginRepository.findByUsername(user.getUsername());
 		log.info("Buscamos por nombre: " + foundUser.getUsername());
-		if (foundUser!=null && !StringUtils.isEmpty(foundUser.getId())){
+		if (!StringUtils.isEmpty(foundUser.getId())){
 			log.info("Found: " + foundUser.getUsername());
 			if(foundUser.getPassword().equals(encryptor.encrypt(user.getPassword()))){
 				TokenData tokenData = new TokenData();
@@ -42,7 +42,7 @@ public class LoginRestController {
 				tokenData.setToken("Token");
 				return new ResponseEntity<>(tokenData, HttpStatus.OK);
 			}else {
-				log.info("Password recibida; '{}'  password bd: '{}'",foundUser.getPassword(),encryptor.encrypt(user.getPassword()) );
+				log.info("Password password bd:  '{}' recibida;  '{}'",encryptor.decrypt(foundUser.getPassword()),user.getPassword() );
 			}
 		} 
 		log.info("No se ha encontrado al usuario");
