@@ -31,7 +31,7 @@ public interface UserRepository extends PagingAndSortingRepository<User,String> 
 	
 	
 	 @Query(value = "{'name': {$regex : '^?0$', $options: 'i'}}")
-	Page<User> findItemsByNameRegexExactMatch(String name);
+	Page<User> findByNameRegexExactMatch(@Param("name") String name);
 //	Page<User> findByNameIgnoreCase(@Param("name") String name, Pageable pageable );
 	
 	
