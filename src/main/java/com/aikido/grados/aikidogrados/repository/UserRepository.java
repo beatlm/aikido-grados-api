@@ -27,7 +27,7 @@ public interface UserRepository extends PagingAndSortingRepository<User,String> 
 	@RestResource( rel="buscarPorLicencia", path="findByLicenceNumber" )
 	Page<User> findByLicence(@Param("licence") String licence, Pageable pageable); 
 	@RestResource( rel="buscarPorNombre", path="findByName" )
-	Page<User> findByNameRegexIgnoreCase(@Param("name") String name, Pageable pageable);
+	Page<User> findByNameIgnoreCase(@Param("name") String name, Pageable pageable);
 	
 	
 	 
