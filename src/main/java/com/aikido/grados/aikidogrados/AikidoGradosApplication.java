@@ -21,6 +21,8 @@ public class AikidoGradosApplication {
 	    config.setAllowCredentials(true);
 	    config.addAllowedOrigin("https://aikido-grados.herokuapp.com"); 
 	    config.addAllowedOrigin("http://localhost:4200");
+	    config.addAllowedOrigin("http://localhost:8080");
+	    config.addAllowedOrigin("*");
 	    config.addAllowedHeader("*");
 	    config.addAllowedMethod("*");
 	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

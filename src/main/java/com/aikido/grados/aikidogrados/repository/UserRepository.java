@@ -1,6 +1,8 @@
 
 package com.aikido.grados.aikidogrados.repository;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.repository.Query;
@@ -18,23 +20,15 @@ import com.aikido.grados.aikidogrados.entity.User;
 
 @RepositoryRestResource(collectionResourceRel = "result", path = "user") 
 @RequestMapping("/api")
-@CrossOrigin(origins = {"http://localhost:4200", "https://aikido-grados.herokuapp.com"}, 
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080","https://aikido-grados.herokuapp.com"}, 
 methods={RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH})
 public interface UserRepository extends PagingAndSortingRepository<User,String> {
-	
-//	@RestResource( rel="buscarPorNombre", path="findByName" )
-//	Page<User> findByName(@Param("name") String name, Pageable pageable); 
 
 	@RestResource( rel="buscarPorLicencia", path="findByLicenceNumber" )
 	Page<User> findByLicence(@Param("licence") String licence, Pageable pageable); 
-	@RestResource( rel="buscarPorNombre", path="findByName" )
-	
-	
-	 @Query(value = "{ $options: 'i'}}")
-	Page<User> findByNameRegex(@Param("name") String name, Pageable pageable);
-//	Page<User> findByNameIgnoreCase(@Param("name") String name, Pageable pageable );
-	
-	
-	 
-	
+
+	@Query(value="{'name': {$regex: ?0 , $options: 'i' }})")
+	List<User> findByQuery(String name);
+
+
 }
