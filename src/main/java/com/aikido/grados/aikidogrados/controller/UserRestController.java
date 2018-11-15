@@ -31,6 +31,7 @@ public class UserRestController {
 	public ResponseEntity<Page<User>> findByName(@RequestBody AuthenticateUser user) {
 
 		Page<User> foundUser = userRepository.findByNameRegex(".*az./i*", null);
+
 		log.info("Se han encontrado {} usuarios ", foundUser.getSize());
 		if(foundUser.hasContent()) {
 				return new ResponseEntity<>(foundUser, HttpStatus.OK);
