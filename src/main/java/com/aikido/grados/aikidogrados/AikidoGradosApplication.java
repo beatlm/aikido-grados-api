@@ -19,8 +19,8 @@ public class AikidoGradosApplication {
 	public FilterRegistrationBean corsFilter() {
 		final CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
-		config.addAllowedOrigin("*");
 		//config.addAllowedOrigin("https://aikido-grados.herokuapp.com"); 
+
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
