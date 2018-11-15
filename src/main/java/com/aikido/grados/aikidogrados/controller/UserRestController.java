@@ -2,8 +2,9 @@
 package com.aikido.grados.aikidogrados.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,13 +28,13 @@ public class UserRestController {
 
 
 	@RequestMapping(value = "/api/findByName", method = RequestMethod.GET)
-	public ResponseEntity<Page<User>> findByName(@RequestParam String name) {
+	public ResponseEntity<List<User>> findByName(@RequestParam String name) {
 
-		Page<User> foundUser = userRepository.findByQuery(name,null);
+		List<User> foundUser = userRepository.findByQuery(name);
 	 
 
-		log.info("Se han encontrado {} usuarios ", foundUser.getSize());
-		if(foundUser.getSize()>0) {
+		log.info("Se han encontrado {} usuarios ", foundUser.size());
+		if(foundUser.size()>0) {
 				return new ResponseEntity<>(foundUser, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);

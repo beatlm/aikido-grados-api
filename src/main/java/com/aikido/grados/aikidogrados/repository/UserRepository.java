@@ -28,7 +28,7 @@ public interface UserRepository extends PagingAndSortingRepository<User,String> 
 	Page<User> findByLicence(@Param("licence") String licence, Pageable pageable); 
 
 	@Query(value="{'name': {$regex: ?0 , $options: 'i' }})")
-	Page<User> findByQuery(String name, Pageable pageable);
+	List<User> findByQuery(String name);
 
 
 }
