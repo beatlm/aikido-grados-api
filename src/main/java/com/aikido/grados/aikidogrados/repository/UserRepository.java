@@ -30,8 +30,8 @@ public interface UserRepository extends PagingAndSortingRepository<User,String> 
 	@RestResource( rel="buscarPorNombre", path="findByName" )
 	
 	
-	 @Query(value = "{'name': {$regex : '^?0$', $options: 'i'}}")
-	Page<User> findByNameRegexExactMatch(@Param("name") String name, Pageable pageable);
+	 @Query(value = "{'name': {$regex : '*', $options: 'i'}}")
+	Page<User> findByNameRegex(@Param("name") String name, Pageable pageable);
 //	Page<User> findByNameIgnoreCase(@Param("name") String name, Pageable pageable );
 	
 	
