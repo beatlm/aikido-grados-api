@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = { "http://localhost:4200", "https://aikido-grados.herokuapp.com" }, methods = {
+@CrossOrigin(origins = { "http://localhost:4200","http://localhost:8080", "https://aikido-grados.herokuapp.com" }, methods = {
 		RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH })
 public class AuthenticationRestController {
 	@Autowired
@@ -34,7 +34,7 @@ public class AuthenticationRestController {
 	public ResponseEntity<TokenData> authenticate(@RequestBody AuthenticateUser user) {
 		log.info("Autenticamos usuario:{} con pasword {} ", user.getUsername(), user.getPassword());
 		AuthenticateUser foundUser = authenticationRepository.findByUsername(user.getUsername());
-		log.info("Buscamos por nombre: " + foundUser.getUsername());
+		
 		if (!StringUtils.isEmpty(foundUser.getId())){
 			log.info("Found: " + foundUser.getUsername());
 			if(encryptor.decrypt(foundUser.getPassword()).equals(user.getPassword())){
