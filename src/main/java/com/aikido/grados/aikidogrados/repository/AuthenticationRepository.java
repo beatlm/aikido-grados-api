@@ -7,5 +7,5 @@ import com.aikido.grados.aikidogrados.model.AuthenticateUser;
 public interface AuthenticationRepository extends CrudRepository<AuthenticateUser, String> {
 
 	public AuthenticateUser findByUsername(String username);
-	public AuthenticateUser findByUsernameAndPassword(String username, String password);
+
 }
