@@ -30,7 +30,7 @@ public class UserRestController {
 	@RequestMapping(value = "/api/findByName", method = RequestMethod.POST)
 	public ResponseEntity<Page<User>> findByName(@RequestBody AuthenticateUser user) {
 
-		Page<User> foundUser = userRepository.findByNameRegex(".*ab.*/i", null);//".*ab.*"
+		Page<User> foundUser = userRepository.findByNameRegexIgnoreCase(".*ab.*", null);//".*ab.*"
 	 
 
 		log.info("Se han encontrado {} usuarios ", foundUser.getSize());
