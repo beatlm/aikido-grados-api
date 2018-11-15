@@ -1,10 +1,9 @@
 
 package com.aikido.grados.aikidogrados.repository;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
@@ -29,7 +28,11 @@ public interface UserRepository extends PagingAndSortingRepository<User,String> 
 	@RestResource( rel="buscarPorLicencia", path="findByLicenceNumber" )
 	Page<User> findByLicence(@Param("licence") String licence, Pageable pageable); 
 	@RestResource( rel="buscarPorNombre", path="findByName" )
-	Page<User> findByNameIgnoreCase(@Param("name") String name, Pageable pageable );
+	
+	
+	 @Query(value = "{'name': {$regex : '^?0$', $options: 'i'}}")
+	Page<User> findItemsByNameRegexExactMatch(String name);
+//	Page<User> findByNameIgnoreCase(@Param("name") String name, Pageable pageable );
 	
 	
 	 
