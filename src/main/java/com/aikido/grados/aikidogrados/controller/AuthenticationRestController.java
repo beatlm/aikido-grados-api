@@ -1,5 +1,5 @@
 
-package com.aikido.grados.controller;
+package com.aikido.grados.aikidogrados.controller;
 
 import org.apache.commons.lang.StringUtils;
 

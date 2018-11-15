@@ -5,4 +5,4 @@
  * @author Vector ITC Group
  *
  */
-package com.aikido.grados.controller;
+package com.aikido.grados.aikidogrados.controller;
