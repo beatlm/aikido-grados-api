@@ -35,7 +35,7 @@ public class AuthenticationRestController {
 		log.info("Autenticamos usuario:{} con pasword {} ", user.getUsername(), user.getPassword());
 		AuthenticateUser foundUser = authenticationRepository.findByUsername(user.getUsername());
 		
-		if (!StringUtils.isEmpty(foundUser.getId())){
+		if (foundUser!=null){
 			log.info("Found: " + foundUser.getUsername());
 			if(encryptor.decrypt(foundUser.getPassword()).equals(user.getPassword())){
 				TokenData tokenData = new TokenData();
