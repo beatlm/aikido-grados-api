@@ -20,7 +20,7 @@ public class AikidoGradosApplication {
 		final CorsConfiguration config = new CorsConfiguration();
 		config.setAllowCredentials(true);
 		//config.addAllowedOrigin("https://aikido-grados.herokuapp.com"); 
-
+		config.addAllowedOrigin("*");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
