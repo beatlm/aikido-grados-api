@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 		RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH })
 public class AuthenticationRestController {
 	@Autowired
-	private AuthenticationRepository loginRepository;
+	private AuthenticationRepository authenticationRepository;
 
 	@Autowired
 	private Encryptor encryptor;
@@ -33,7 +33,7 @@ public class AuthenticationRestController {
 	@RequestMapping(value = "/authenticate", method = RequestMethod.POST)
 	public ResponseEntity<TokenData> authenticate(@RequestBody AuthenticateUser user) {
 
-		AuthenticateUser foundUser = loginRepository.findByUsername(user.getUsername());
+		AuthenticateUser foundUser = authenticationRepository.findByUsername(user.getUsername());
 		log.info("Buscamos por nombre: " + foundUser.getUsername());
 		if (!StringUtils.isEmpty(foundUser.getId())){
 			log.info("Found: " + foundUser.getUsername());
@@ -58,9 +58,9 @@ public class AuthenticationRestController {
 		newUser.setUsername(user.getUsername());
 		newUser.setPassword(encryptor.encrypt(user.getPassword()));
 		log.info("Guardamos el usuario '{}' con password '{}'", newUser.getUsername(), newUser.getPassword());
-		loginRepository.save(newUser);
+		authenticationRepository.save(newUser);
 
-		AuthenticateUser foundUser = loginRepository.findByUsername(newUser.getUsername());
+		AuthenticateUser foundUser = authenticationRepository.findByUsername(newUser.getUsername());
 		log.info("Found: " + foundUser.getUsername());
 
 		return new ResponseEntity<>(foundUser, HttpStatus.OK);

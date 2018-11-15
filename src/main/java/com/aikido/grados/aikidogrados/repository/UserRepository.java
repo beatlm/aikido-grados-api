@@ -21,10 +21,12 @@ import com.aikido.grados.aikidogrados.entity.User;
 methods={RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH})
 public interface UserRepository extends PagingAndSortingRepository<User,String> {
 	
-	@RestResource( rel="buscarPorNombre", path="findByName" )
-	Page<User> findByName(@Param("name") String name, Pageable pageable); 
+//	@RestResource( rel="buscarPorNombre", path="findByName" )
+//	Page<User> findByName(@Param("name") String name, Pageable pageable); 
 
 	@RestResource( rel="buscarPorLicencia", path="findByLicenceNumber" )
 	Page<User> findByLicence(@Param("licence") String licence, Pageable pageable); 
+	
+	Page<User> findByNameRegex(String name);
 	
 }
