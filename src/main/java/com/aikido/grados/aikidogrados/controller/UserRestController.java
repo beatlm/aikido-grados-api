@@ -27,10 +27,10 @@ public class UserRestController {
 	private UserRepository userRepository;
 
 
-	@RequestMapping(value = "/api/findByName", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/api/findByName", method = RequestMethod.POST)
 	public ResponseEntity<Page<User>> findByName(@RequestBody AuthenticateUser user) {
 
-		Page<User> foundUser = userRepository.findByNameRegexIgnoreCase(".*ab.*", null);//".*ab.*"
+		Page<User> foundUser = userRepository.findByNameIgnoreCase(user.getUsername()", null);//".*ab.*"
 	 
 
 		log.info("Se han encontrado {} usuarios ", foundUser.getSize());
@@ -38,10 +38,10 @@ public class UserRestController {
 				return new ResponseEntity<>(foundUser, HttpStatus.OK);
 		}else {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
-		}
+		}*/
 			
 
-	}
+	//}
 
 	
 }
