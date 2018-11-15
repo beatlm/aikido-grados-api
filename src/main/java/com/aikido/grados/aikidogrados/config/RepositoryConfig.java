@@ -1,4 +1,4 @@
-package com.aikido.grados.aikidogrados.repository;
+package com.aikido.grados.aikidogrados.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;

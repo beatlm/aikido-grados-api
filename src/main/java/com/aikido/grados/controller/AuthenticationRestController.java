@@ -1,5 +1,5 @@
 
-package com.aikido.grados.aikidogrados.repository;
+package com.aikido.grados.controller;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aikido.grados.aikidogrados.model.AuthenticateUser;
 import com.aikido.grados.aikidogrados.model.TokenData;
+import com.aikido.grados.aikidogrados.repository.AuthenticationRepository;
 import com.aikido.grados.aikidogrados.utils.Encryptor;
 
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +23,9 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @CrossOrigin(origins = { "http://localhost:4200", "https://aikido-grados.herokuapp.com" }, methods = {
 		RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH })
-public class LoginRestController {
+public class AuthenticationRestController {
 	@Autowired
-	private LoginRepository loginRepository;
+	private AuthenticationRepository loginRepository;
 
 	@Autowired
 	private Encryptor encryptor;
