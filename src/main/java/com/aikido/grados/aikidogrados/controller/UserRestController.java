@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
+@RequestMapping("/api/user")
 @CrossOrigin(origins = { "http://localhost:4200","http://localhost:8080", "https://aikido-grados.herokuapp.com" }, methods = {
 		RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH })
 public class UserRestController {
@@ -27,21 +28,26 @@ public class UserRestController {
 	private UserRepository userRepository;
 
 
-	@RequestMapping(value = "/api/findByName", method = RequestMethod.GET)
+	@RequestMapping(value = "/findByName", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> findByName(@RequestParam String name) {
-
-		List<User> foundUser = userRepository.findByQuery(name);
-	 
-
+		List<User> foundUser = userRepository.findByNameQuery(name);
 		log.info("Se han encontrado {} usuarios ", foundUser.size());
-		if(foundUser.size()>0) {
-				return new ResponseEntity<>(foundUser, HttpStatus.OK);
-		}else {
+		if(foundUser.isEmpty()) {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+		}else {
+			return new ResponseEntity<>(foundUser, HttpStatus.OK);
 		}
-			
-
 	}
 
-	
+	@RequestMapping(value = "/findByLicence", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> findByLicence(@RequestParam String licence) {
+		List<User> foundUser = userRepository.findByLicenceQuery(licence);
+		log.info("Se han encontrado {} usuarios ", foundUser.size());
+		if(foundUser.isEmpty()) {
+			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+		}else {
+			return new ResponseEntity<>(foundUser, HttpStatus.OK);
+		}
+	}
+
 }

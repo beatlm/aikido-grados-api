@@ -7,8 +7,8 @@
 	<artifactId>aikido-grados</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>aikido-gradosR</name>
-	<description>Demo project for Spring Boot</description>
+	<name>aikido-grados</name>
+	<description>Microservices for aikido grados application</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
