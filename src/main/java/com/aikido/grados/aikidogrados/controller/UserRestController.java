@@ -44,7 +44,7 @@ public class UserRestController {
 
 	@RequestMapping(value = "/findByLicence", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> findByLicence(@RequestParam String licence) {
-		List<User> foundUser = userRepository.findByIdQuery(licence);
+		List<User> foundUser = userRepository.findByLicence(licence);
 		log.info("Se han encontrado {} usuarios para la licencia {}", foundUser.size(),licence);
 		if(foundUser.isEmpty()) {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
