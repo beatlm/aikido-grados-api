@@ -51,7 +51,7 @@ public class UserRestController {
 		}
 	}
 
-	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/findAll", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> findAll() {
 		List<User> foundUser = userRepository.findAll();
 		log.info("Se han encontrado {} usuarios ", foundUser.size());
@@ -60,9 +60,9 @@ public class UserRestController {
 		}else {
 			return new ResponseEntity<>(foundUser, HttpStatus.OK);
 		}
-	}
+	}*/
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+/*	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> getUser(@RequestParam String id) {
 		Optional<User> foundUser = userRepository.findById(id);
 		if(foundUser.isPresent()) {
@@ -70,5 +70,5 @@ public class UserRestController {
 		}else {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
 		}
-	}
+	}*/
 }
