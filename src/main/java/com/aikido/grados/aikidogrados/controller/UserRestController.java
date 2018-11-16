@@ -45,7 +45,7 @@ public class UserRestController {
 	@RequestMapping(value = "/findByLicence", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> findByLicence(@RequestParam String licence) {
 		List<User> foundUser = userRepository.findByLicenceQuery(licence);
-		log.info("Se han encontrado {} usuarios ", foundUser.size());
+		log.info("Se han encontrado {} usuarios para la licencia {}", foundUser.size(),licence);
 		if(foundUser.isEmpty()) {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
 		}else {
@@ -69,6 +69,16 @@ public class UserRestController {
 		Optional<User> foundUser = userRepository.findById(id);
 		if(foundUser.isPresent()) {
 			return new ResponseEntity<>(foundUser.get(), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+		}
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.PATCH)
+	public ResponseEntity<User> modifyUser(@RequestBody User user) {
+		User foundUser = userRepository.save(user);
+		if(foundUser!=null) {
+			return new ResponseEntity<>( HttpStatus.CREATED);
 		}else {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
 		}
