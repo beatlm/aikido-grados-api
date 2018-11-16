@@ -33,7 +33,7 @@ public class UserRestController {
 
 	@RequestMapping(value = "/findByName", method = RequestMethod.GET)
 	public ResponseEntity<List<User>> findByName(@RequestParam String name) {
-		List<User> foundUser = userRepository.findByNameQuery(name);
+		List<User> foundUser = userRepository.findByNameLike(name);
 		log.info("Se han encontrado {} usuarios ", foundUser.size());
 		if(foundUser.isEmpty()) {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
