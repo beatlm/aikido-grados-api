@@ -3,6 +3,7 @@ package com.aikido.grados.aikidogrados.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,6 +59,16 @@ public class UserRestController {
 			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
 		}else {
 			return new ResponseEntity<>(foundUser, HttpStatus.OK);
+		}
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<User> getUser(@RequestParam String id) {
+		Optional<User> foundUser = userRepository.findById(id);
+		if(foundUser.isPresent()) {
+			return new ResponseEntity<>(foundUser.get(), HttpStatus.OK);
+		}else {
+			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
 		}
 	}
 }
