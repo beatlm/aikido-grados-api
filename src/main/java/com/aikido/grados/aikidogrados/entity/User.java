@@ -9,13 +9,7 @@ public class User {
 	private String licence;
 
 	private String name;
-
-	public String getLicence() {
-		return licence;
-	}
-	public void setLicence(String licence) {
-		this.licence = licence;
-	}
+	
 	private String email;
 	private String status;
 	private String grado;
@@ -26,6 +20,13 @@ public class User {
 	private Date receivedDate;
 	private File file;
 	private File paymentFile;
+
+	public String getLicence() {
+		return licence;
+	}
+	public void setLicence(String licence) {
+		this.licence = licence;
+	}
 
 	public String getName() {
 		return name;
