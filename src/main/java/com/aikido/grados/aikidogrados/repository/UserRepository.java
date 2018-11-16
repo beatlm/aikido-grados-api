@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.aikido.grados.aikidogrados.entity.User;
 
-@RequestMapping(value="/api/user")
-@RepositoryRestResource(collectionResourceRel = "result", path = "/api/user") 
+
+@RepositoryRestResource(collectionResourceRel = "result", path = "/api/user/") 
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080","https://aikido-grados.herokuapp.com"}, 
 methods={RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH})
 public interface UserRepository extends CrudRepository<User,String> {
