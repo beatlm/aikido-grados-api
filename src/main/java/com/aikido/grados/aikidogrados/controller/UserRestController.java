@@ -50,4 +50,14 @@ public class UserRestController {
 		}
 	}
 
+	@RequestMapping(value = "/findAll", method = RequestMethod.GET)
+	public ResponseEntity<List<User>> findAll() {
+		List<User> foundUser = userRepository.findAll();
+		log.info("Se han encontrado {} usuarios ", foundUser.size());
+		if(foundUser.isEmpty()) {
+			return new ResponseEntity<>( HttpStatus.NO_CONTENT);
+		}else {
+			return new ResponseEntity<>(foundUser, HttpStatus.OK);
+		}
+	}
 }

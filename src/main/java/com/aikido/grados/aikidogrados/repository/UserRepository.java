@@ -24,5 +24,7 @@ public interface UserRepository extends CrudRepository<User,String> {
 	@Query(value="{'name': {$regex: ?0 , $options: 'i' }})")
 	public List<User> findByNameQuery(String name);
 
+	//@RestResource(  path="/api/user/findAll" )
+	public List<User> findAll();
 
 }
