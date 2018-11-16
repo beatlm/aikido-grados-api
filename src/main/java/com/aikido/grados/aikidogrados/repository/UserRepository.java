@@ -12,7 +12,7 @@ import com.aikido.grados.aikidogrados.entity.User;
 public interface UserRepository extends CrudRepository<User,String> {
 	
 	@Query(value="{'licence': {$regex: ?0 , $options: 'i' }})")
-	public List<User> findByLicenceQuery(String name);
+	public List<User> findByLicenceQuery(String licence);
 
 	@Query(value="{'name': {$regex: ?0 , $options: 'i' }})")
 	public List<User> findByNameQuery(String name);
