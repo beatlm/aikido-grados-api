@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.aikido.grados.aikidogrados.entity.User;
 
 
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 @RepositoryRestResource(collectionResourceRel = "result", path = "user") 
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080","https://aikido-grados.herokuapp.com"}, 
 methods={RequestMethod.GET, RequestMethod.DELETE, RequestMethod.POST, RequestMethod.PATCH})
