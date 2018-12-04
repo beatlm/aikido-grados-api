@@ -16,18 +16,15 @@ public class AikidoGradosApplication {
 	}
 
 	@Bean
-	  public FilterRegistrationBean corsFilter() {
+	  public FilterRegistrationBean<CorsFilter> corsFilter() {
 	    final CorsConfiguration config = new CorsConfiguration();
 	    config.setAllowCredentials(true);
-	    config.addAllowedOrigin("https://aikido-grados.herokuapp.com"); 
-	    config.addAllowedOrigin("http://localhost:4200");
-	    config.addAllowedOrigin("http://localhost:8080");
 	    config.addAllowedOrigin("*");
 	    config.addAllowedHeader("*");
 	    config.addAllowedMethod("*");
 	    final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 	    source.registerCorsConfiguration("/**", config);
-	    final FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+	    final FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<>(new CorsFilter(source));
 	    bean.setOrder(0);
 	    return bean;
 	  }
