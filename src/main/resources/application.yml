@@ -9,6 +9,7 @@ spring:
   mongodb:
    #uri: mongodb://mongo:27000/aikido #mongodb://containerName:containerPort/dbName
    uri: mongodb://beatlm:aikidodb18@ds135413.mlab.com:35413/aikido
+
    database: aikido
    
    
