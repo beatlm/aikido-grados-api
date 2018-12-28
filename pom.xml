@@ -5,7 +5,7 @@
 
 	<groupId>com.aikido.grados</groupId>
 	<artifactId>aikido-grados</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 
 	<name>aikido-grados</name>
 	<description>Microservices for aikido grados application</description>
