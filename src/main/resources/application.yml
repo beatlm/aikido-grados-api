@@ -7,10 +7,8 @@ spring:
   rest:
    defaultMediaType: application/json
   mongodb:
-   #uri: mongodb://mongo:27000/aikido #mongodb://containerName:containerPort/dbName
-   uri: mongodb://beatlm:aikidodb18@ds135413.mlab.com:35413/aikido
-
-   database: aikido
+   uri: ${MONGO_DB_URI}
+   database: ${MONGO_DB_NAME}
    
    
 
